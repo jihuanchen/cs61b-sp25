@@ -3,26 +3,48 @@ import java.util.List;
 
 public class JavaExercises {
 
-    /** Returns an array [1, 2, 3, 4, 5, 6] */
+    /** Returns an array [1, 2, 3, 4, 5, 6]
+     * 返回一个数组 [1, 2, 3, 4, 5, 6] */
     public static int[] makeDice() {
         // TODO: Fill in this function.
-        return null;
+
+        return new int[]{1,2,3,4,5,6};
     }
 
     /** Returns the order depending on the customer.
      *  If the customer is Ergun, return ["beyti", "pizza", "hamburger", "tea"].
      *  If the customer is Erik, return ["sushi", "pasta", "avocado", "coffee"].
-     *  In any other case, return an empty String[] of size 3. */
+     *  In any other case, return an empty String[] of size 3.
+     *  根据顾客返回订单。
+     * * 如果顾客是 Ergun，返回 ["beyti", "pizza", "hamburger", "tea"]。
+     * * 如果顾客是 Erik，返回 ["sushi", "pasta", "avocado", "coffee"]。
+     * * 在其他任何情况下，返回一个大小为 3 的空字符串数组。*/
     public static String[] takeOrder(String customer) {
         // TODO: Fill in this function.
-        return null;
+        if ("Ergun".equals(customer)){
+            return new String[]{"beyti", "pizza", "hamburger", "tea"};
+        } else if ("Erik".equals(customer)) {
+            return new String[]{"sushi", "pasta", "avocado", "coffee"};
+        }else {
+            return new String[3];
+        }
+
+
     }
 
     /** Returns the positive difference between the maximum element and minimum element of the given array.
-     *  Assumes array is nonempty. */
+     *  Assumes array is nonempty.
+     *  返回给定数组中最大元素与最小元素之间的正差值。
+     * * 假设数组非空。*/
     public static int findMinMax(int[] array) {
         // TODO: Fill in this function.
-        return 0;
+        int min = array[0],max=array[0];
+        for (int i = 1;i<array.length;i++){
+            int v=array[i];
+            if (v<min)min=v;
+            if (v>max)max=v;
+        }
+        return max-min;
     }
 
     /**
@@ -32,14 +54,25 @@ public class JavaExercises {
       *        - If n is even, divide n by 2
       *        - If n is odd, multiply n by 3 and add 1
       *    - Continue this process until n is 1
+     *    通过递归的方式将哈希尔序列计算为一个以整数形式呈现的列表，起始值为输入的数字 n。
+     * * 哈希尔序列的描述如下：
+     * *    - 选取一个正整数 n 作为起始值
+     * *        - 如果 n 是偶数，将 n 除以 2
+     * *        - 如果 n 是奇数，将 n 乘以 3 再加 1
+     * *    - 重复此过程，直至 n 变为 1
       */
     public static List<Integer> hailstone(int n) {
+        //生成从n开始的hailstone(冰雹)序列
         return hailstoneHelper(n, new ArrayList<>());
     }
 
     private static List<Integer> hailstoneHelper(int x, List<Integer> list) {
         // TODO: Fill in this function.
-        return null;
+        list.add(x); //先把当前值放入
+        if(x ==1)return  list;  //递归终止
+        int next = (x%2==0)?(x/2) : (x*3 +1);
+
+        return hailstoneHelper(next,list);
     }
 
 }
